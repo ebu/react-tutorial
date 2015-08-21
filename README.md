@@ -47,3 +47,11 @@ We provide you already with a vagrant file running "ubuntu/trusty64" and prepare
 2. In the directory where your vagrantfile is place, run: `vagrant up`
 3. Run main.js: `node main.js dataFileName.converted`
 4. Launch localhost:300/data
+
+## Contributors
+Solène Buet (EBU)
+Mathieu Habegger (EBU)
+
+## Copyright & license
+Copyright (c) 2014, EBU-UER Technology & Innovation
+The code is under BSD (3-Clause) License. (see LICENSE)
