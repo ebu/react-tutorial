@@ -108,8 +108,9 @@ app.get('/data/country/:country', function(req, res) {
     res.sendStatus(404);
     return;
   }
-
-  res.json(db[country]);
+  setTimeout(function() {
+    res.json(db[country]);
+  }, 2000);
 });
 
 app.get('/status', function (req, res) {
