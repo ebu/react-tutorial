@@ -43,6 +43,12 @@ app.get('/status', function (req, res) {
 });
 
 
+app.use(function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  next();
+});
+
 /**
  * Migrants API
  */
@@ -90,7 +96,7 @@ app.get('/data/summary', function (req, res) {
   res.json(db);
 });
 
-var server = app.listen(3000, function () {
+var server = app.listen(80, function () {
   var host = server.address().address;
   var port = server.address().port;
   console.log('Example app listening at http://%s:%s', host, port);
