@@ -1,9 +1,10 @@
 var express = require('express'),
-    app = express(),
-    fs = require('fs'),
-    readline = require('readline'),
-    filename = process.argv[2],
-    lines = [];
+  app = express(),
+  fs = require('fs'),
+  readline = require('readline'),
+  CSV = require('csv-string'),
+  filename = process.argv[2],
+  lines = [];
 
 
 var rd = readline.createInterface({
@@ -30,15 +31,67 @@ rd.on('line', function(line) {
 });
 
 app.get('/data', function (req, res) {
-    var tenLines =[];
-    for(var i = 0; i < 10; i++) {
-        tenLines.push(lines[Math.floor(Math.random()*lines.length)]);
+  var tenLines =[];
+  for(var i = 0; i < 10; i++) {
+      tenLines.push(lines[Math.floor(Math.random()*lines.length)]);
+  }
+  res.json(tenLines);
+});
+
+app.get('/status', function (req, res) {
+  res.json({"status": "ok"})
+});
+
+
+/**
+ * Migrants API
+ */
+
+var dbfile = "";
+var db = {};
+var filename = 'data/migr_imm5prv_1_Data.csv'
+
+var rd = readline.createInterface({
+  input: fs.createReadStream(filename, {encoding: 'utf-8'}),
+  output: process.stdout,
+  terminal: false
+});
+
+rd.on('line', function(line) {
+  if (line.indexOf('TIME') < 0) {
+    dbfile += line +'\n';
+  }
+});
+
+rd.on('pause', function() {
+  data = CSV.parse(dbfile);
+  for (var i = 0; i < data.length; i++ ) {
+    var country = data[i][1];
+    var year = data[i][0];
+    var origin = data[i][2];
+    var age = data[i][3];
+    var gender = data[i][4];
+    var value = data[i][6];
+
+    if (country.length > 0 && year.length > 0) {
+      if (! (country in db)) {
+        db[country] = {};
+      }
+
+      if (age == 'TOTAL' && gender == 'Total' && value !== ':') {
+        db[country][year] = value;
+      }
     }
-    res.json(tenLines);
+  }
+  console.log("Data ready.", data.length);
+})
+
+app.get('/data/summary', function (req, res) {
+  res.json(db);
 });
 
 var server = app.listen(3000, function () {
-    var host = server.address().address;
-    var port = server.address().port;
-    console.log('Example app listening at http://%s:%s', host, port);
+  var host = server.address().address;
+  var port = server.address().port;
+  console.log('Example app listening at http://%s:%s', host, port);
 });
