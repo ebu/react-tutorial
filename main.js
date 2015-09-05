@@ -3,7 +3,6 @@ var express = require('express'),
   fs = require('fs'),
   readline = require('readline'),
   CSV = require('csv-string'),
-  filename = process.argv[2],
   lines = [];
 //
 //
@@ -43,8 +42,10 @@ var express = require('express'),
  * Migrants API
  */
 
-var dbfile = "";
+var dbFile = "";
 var db = {};
+var dbTotal = {};
+
 var filename = 'data/migr_imm5prv_1_Data.csv'
 
 var rd = readline.createInterface({
@@ -55,12 +56,12 @@ var rd = readline.createInterface({
 
 rd.on('line', function(line) {
   if (line.indexOf('TIME') < 0) {
-    dbfile += line +'\n';
+    dbFile += line +'\n';
   }
 });
 
 rd.on('pause', function() {
-  data = CSV.parse(dbfile);
+  data = CSV.parse(dbFile);
   for (var i = 0; i < data.length; i++ ) {
     var country = data[i][1];
     var year = data[i][0];
@@ -70,23 +71,25 @@ rd.on('pause', function() {
     var value = data[i][6];
 
     if (country.length > 0 && year.length > 0) {
-      if (! (country in db)) {
+      if (! (country in dbTotal)) {
+        dbTotal[country] = {};
         db[country] = {};
       }
 
       if (age == 'TOTAL' && gender == 'Total' && value !== ':') {
-        db[country][year] = value;
+        dbTotal[country][year] = value;
+      }
+      else if (age == 'TOTAL' && value !== ':') {
+        if (! (year in db[country])) {
+          db[country][year] = {}
+        }
+        db[country][year][gender] = value;
       }
     }
   }
+
   console.log("Data ready.", data.length);
 })
-
-
-app.get('/data/summary', function (req, res) {
-  res.json(db);
-});
-
 
 app.use(function(req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
@@ -94,6 +97,20 @@ app.use(function(req, res, next) {
   next();
 });
 
+app.get('/data/summary', function (req, res) {
+  res.json(dbTotal);
+});
+
+app.get('/data/country/:country', function(req, res) {
+  var country = req.params.country;
+
+  if (! (country in db)) {
+    res.sendStatus(404);
+    return;
+  }
+
+  res.json(db[country]);
+});
 
 app.get('/status', function (req, res) {
   res.json({"status": "ok"})
