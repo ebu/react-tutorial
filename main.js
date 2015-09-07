@@ -117,6 +117,9 @@ app.get('/status', function (req, res) {
   res.json({"status": "ok"})
 });
 
+app.use('/web',express.static('web'));
+app.use('/node_modules',express.static('node_modules'));
+
 var server = app.listen(8000, function () {
   var host = server.address().address;
   var port = server.address().port;
