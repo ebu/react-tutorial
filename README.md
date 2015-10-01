@@ -30,7 +30,7 @@ Get a summary of all countries.
 ### /data/country/<countryName>
 Get additional data for the country.
 
-## /web 
+### /web 
 Get the example of web page. 
 
 ## About
