@@ -123,7 +123,7 @@ var SummaryTable = React.createClass({
   render: function() {
     var rows = []
     for(var country in this.props.data) {
-      if(country.indexOf(this.props.countryFilter)>=0) {
+      if(country.toLowerCase().indexOf(this.props.countryFilter.toLowerCase())>=0) {
         rows.push(<SummaryRow 
           key={country} 
           country={country}
