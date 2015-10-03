@@ -1,5 +1,5 @@
 # react-tutorial
-This repository contains the material for the react tutorial at EBU DevCon 2015
+This repository contains the material for the react tutorial at [EBU DevCon 2015](https://tech.ebu.ch/devcon15)
 
 An example of the app that we intend to create can be found here: http://react-tutorial.ebu.io/web/
 
