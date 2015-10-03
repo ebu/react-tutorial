@@ -75,8 +75,8 @@ Get gender breakdown of a country by year. Returns a two dimensional json object
       },
       ...
       "2013": {
-      "Males":"36 697",
-      "Females":"31 939"
+        "Males":"36 697",
+        "Females":"31 939"
       }
     }
 
