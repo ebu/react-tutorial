@@ -1,57 +1,47 @@
 # react-tutorial
 This repository contains the material for the react tutorial at EBU DevCon 2015
 
+An example of the app that we intend to create can be found here: http://react-tutorial.ebu.io/web/
+
+## Setup 
+### For the workshop
+During the workshop, the web server is not supposed to be edited. 
+
+In order to edit the JavaScript and HTML code, you should: 
+
+- Install Git (and the github desktop app if you are not very confortable with the command line)
+- Clone this project on your laptop (fork it before if you want to put your code on github later).
+- Install a recent browser (Chrome would be best)
+- To Run a webserver from a terminal: 
+  1. cd to the root of the react-tutorial directory you cloned from github. For example: `cd Desktop/react-tutorial`
+  2. You can run the server using either python or nodejs. 
+    - using Python: run: `python -m SimpleHTTPServer 8888`
+    - using node: run: ` node node_modules/http-server/bin/http-server -p 8888 --cors`
+- Open http://localhost:8888/web/index.html in the browser, verify that you have a web page. This is an 
+example page of what we can do with the data. During the workshop you'll build your own! 
+
+The web server accessed will be located at: http://react-tutorial.ebu.io/ 
+
+## Web server API
+
+### /data/summary
+Get a summary of all countries.  
+
+### /data/country/<countryName>
+Get additional data for the country.
+
+### /web 
+Get the example of web page. 
+
 ## About
-The main.js file will generate for you an object containing ten lines, chosen randomly from the data you will give in argument.
-
-The data used in that usecase can be found here: ftp://ita.ee.lbl.gov/traces/NASA_access_log_Jul95.gz
-
-It is provided by the NASA Kennedy Space Center WWW server in Florida.
-
-The lines obtained will be presented as following:
-
-   "ip":"199.120.110.21",
-
-   "city":"Iowa",
-   
-   "country":"US",
-   
-   "latitude":"41.5839",
-   
-   "longitude":"-93.6289",
-   
-   "date":"[01/Jul/1995:00:00:09 -0400]",
-   
-   "request":""GET /shuttle/missions/sts-73/mission-sts-73.html HTTP/1.0"",
-   
-   "status_code":"200",
-   
-   "content_size":"4085"
-   
-
-The convert.py script will process line by line the log information and give you the location from where requests are done (State, Country, Latitude and Longitude).
-
-Once converted, the returned file will have the name of your file followed by the .converted extension.
-
-convert.py use the freegeoip database, that provides a public HTTP API for software developers to search the geolocation of IP addresses.
-
-You will use vagrant in order to run the main file. For now, it is configured so you can access from your browser at localhost:300/data.
-
-You need then to install vagrant: https://www.vagrantup.com/
-
-We provide you already with a vagrant file running "ubuntu/trusty64" and prepared to use npm, node, express and readline modules.
-
-### Usage:
-
-1. Convert with the use of convert.py your data: `python convert.py dataFileName`
-2. In the directory where your vagrantfile is place, run: `vagrant up`
-3. Run main.js: `node main.js dataFileName.converted`
-4. Launch localhost:300/data
-
 ## Contributors
-Solène Buet (EBU)
-Mathieu Habegger (EBU)
+- Solène Buet (EBU)
+- Mathieu Habegger (EBU)
+- Michael Barroco (EBU)
+- Christopher Chiche (www.christopherchiche.com)
+
+Pull requests are welcome! 
 
 ## Copyright & license
-Copyright (c) 2014, EBU-UER Technology & Innovation
+Copyright (c) 2015, EBU-UER Technology & Innovation
 The code is under BSD (3-Clause) License. (see LICENSE)
