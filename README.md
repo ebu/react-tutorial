@@ -49,11 +49,8 @@ Get a summary of all countries. Returns a two dimensional json object. (Dimensio
       },
       ...
       "Bulgaria": {
-        ...
-        "Azerbaijan": {
-          "2005":"2 013",
-          "2007":"1 954"
-        }
+        "2005":"2 013",
+        "2007":"1 954"
       }
     }
 
