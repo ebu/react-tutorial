@@ -119,6 +119,8 @@ app.get('/status', function (req, res) {
 
 app.use('/web',express.static('web'));
 app.use('/node_modules',express.static('node_modules'));
+app.use('/scripts',express.static('scripts'));
+app.use('/css',express.static('css'));
 
 var server = app.listen(8000, function () {
   var host = server.address().address;
