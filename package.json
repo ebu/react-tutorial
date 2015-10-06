@@ -18,7 +18,8 @@
   "devDependencies": {},
   "scripts": {
     "start": "cd server && node main.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "presentation": "babel presentation/example.jsx > presentation/example.js"
   },
   "repository": {
     "type": "git",

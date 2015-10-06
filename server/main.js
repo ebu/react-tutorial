@@ -35,8 +35,9 @@ app.get('/status', function (req, res) {
   res.json({'status': 'ok'})
 });
 
-app.use('/web',express.static('../web'));
+app.use('/web',express.static('../web_advanced'));
 app.use('/node_modules',express.static('../node_modules'));
+app.use('/scripts',express.static('../scripts'));
 
 var startServer = function() {
   // Enable CORS
