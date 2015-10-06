@@ -53,6 +53,9 @@ var SummaryCountryModal = React.createClass({
         <td>{females}</td>
       </tr>);
     }
+    tableRows.sort(function(a,b) {
+      return a.key<b.key?1:-1;
+    })
     // Create all rows for the table they will be added to the returned table. 
 
     return <Modal show={this.props.showModal} onHide={this.props.closeModal} bsSize='lg'>
@@ -132,7 +135,12 @@ var SummaryTable = React.createClass({
           showModal={this.props.showModal.bind(null,country)}
         />);
       }
+      rows.sort(function(a,b) {
+        return a.key>b.key?1:-1;
+      })
     }
+  
+
     return <Table striped bordered condensed hover>
       <thead><tr>
         <th>Country</th>
