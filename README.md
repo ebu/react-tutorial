@@ -1,26 +1,27 @@
 # react-tutorial
 This repository contains the material for the react tutorial at [EBU DevCon 2015](https://tech.ebu.ch/devcon15)
 
-An example of the app that we intend to create can be found here: http://react-tutorial.ebu.io/web/
+An example of the app that we intend to create can be found here: [http://react-tutorial.ebu.io/web/](http://react-tutorial.ebu.io/web/)
 
 ## Setup 
 ### For the workshop
-During the workshop, the web server is not supposed to be edited. 
+During the workshop, the web server (data API) is not supposed to be edited. 
 
-In order to edit the JavaScript and HTML code, you should: 
+In order to edit the JavaScript and HTML code, and the try the _react_ page, you should: 
 
-- Install Git (and the github desktop app if you are not very confortable with the command line)
+- Install Git (and the Github desktop app if you are not very comfortable with the command line)
 - Clone this project on your laptop (fork it before if you want to put your code on github later).
 - Install a recent browser (Chrome would be best)
-- To Run a webserver from a terminal: 
-  1. cd to the root of the react-tutorial directory you cloned from github. For example: `cd Desktop/react-tutorial`
-  2. You can run the server using either python or nodejs. 
-    - using Python: run: `cd server && python -m SimpleHTTPServer 8888`
-    - using node: run: `cd server && node node_modules/http-server/bin/http-server -p 8888 --cors`
-- Open http://localhost:8888/web_advanced/index.html in the browser, verify that you have a web page. This is an 
-example page of what we can do with the data. During the workshop you'll build your own! 
+- Run a local http server from a terminal to host the html and react (it's not the data API): 
+  1. cd to the root of the react-tutorial directory you cloned from Github. For example:  `cd Desktop/react-tutorial`
+  2. You can run a server using either python or nodejs. 
+    - using Python: run: `python -m SimpleHTTPServer 8888`
+    - using node: run: `node node_modules/http-server/bin/http-server -p 8888 --cors`
+- Open [http://localhost:8888/web_advanced/index.html](http://localhost:8888/web_advanced/index.html) in the browser, 
+  verify that you have a web page. This is an example page of what we can do with the data. 
+  During the workshop you'll build your own! 
 
-The web server accessed will be located at: http://react-tutorial.ebu.io/ 
+The web server accessed will be located at: [http://react-tutorial.ebu.io/](http://react-tutorial.ebu.io/) 
 
 ## Web server API
 For the purpose of the tutorial, the webserver installation is optional.
@@ -88,7 +89,7 @@ Get the example of web page.
 
 ### Running the web server locally
 
-You need to install nodejs and npm on your computer.
+You'll need to install nodejs and npm on your computer. Then from the root directory run the following:
 
 ```
 npm install
