@@ -17,7 +17,7 @@ In order to edit the JavaScript and HTML code, you should:
   2. You can run the server using either python or nodejs. 
     - using Python: run: `cd server && python -m SimpleHTTPServer 8888`
     - using node: run: `cd server && node node_modules/http-server/bin/http-server -p 8888 --cors`
-- Open http://localhost:8888/web/index.html in the browser, verify that you have a web page. This is an 
+- Open http://localhost:8888/web_advanced/index.html in the browser, verify that you have a web page. This is an 
 example page of what we can do with the data. During the workshop you'll build your own! 
 
 The web server accessed will be located at: http://react-tutorial.ebu.io/ 
