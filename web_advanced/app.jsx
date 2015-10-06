@@ -15,7 +15,7 @@ var Input = ReactBootstrap.Input;
 // React components. If using packagers such as browserify, this is where the 
 // require calls would be made. 
 
-var dataAddress = 'http:///react-tutorial.ebu.io';
+var dataAddress = 'http://react-tutorial.ebu.io';
 // use 'http:///react-tutorial.ebu.io' if you don't want to create a server. 
 
 var SummaryCountryModal = React.createClass({
