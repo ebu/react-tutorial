@@ -15,7 +15,7 @@ var Input = ReactBootstrap.Input;
 // React components. If using packagers such as browserify, this is where the 
 // require calls would be made. 
 
-var dataAddress = '';
+var dataAddress = 'http:///react-tutorial.ebu.io';
 // use 'http:///react-tutorial.ebu.io' if you don't want to create a server. 
 
 var SummaryCountryModal = React.createClass({
@@ -53,6 +53,9 @@ var SummaryCountryModal = React.createClass({
         <td>{females}</td>
       </tr>);
     }
+    tableRows.sort(function(a,b) {
+      return a.key<b.key?1:-1;
+    })
     // Create all rows for the table they will be added to the returned table. 
 
     return <Modal show={this.props.showModal} onHide={this.props.closeModal} bsSize='lg'>
@@ -123,7 +126,7 @@ var SummaryTable = React.createClass({
   render: function() {
     var rows = []
     for(var country in this.props.data) {
-      if(country.indexOf(this.props.countryFilter)>=0) {
+      if(country.toLowerCase().indexOf(this.props.countryFilter.toLowerCase())>=0) {
         rows.push(<SummaryRow 
           key={country} 
           country={country}
@@ -132,7 +135,12 @@ var SummaryTable = React.createClass({
           showModal={this.props.showModal.bind(null,country)}
         />);
       }
+      rows.sort(function(a,b) {
+        return a.key>b.key?1:-1;
+      })
     }
+  
+
     return <Table striped bordered condensed hover>
       <thead><tr>
         <th>Country</th>
