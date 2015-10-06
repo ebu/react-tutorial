@@ -36,7 +36,11 @@ app.get('/status', function (req, res) {
 });
 
 app.use('/web',express.static('../web_advanced'));
+app.use('/web_advanced',express.static('../web_advanced'));
+app.use('/web_basic',express.static('../web_basic'));
 app.use('/basic',express.static('../web_basic'));
+app.use('/presentation',express.static('../presentation'))
+
 app.use('/node_modules',express.static('../node_modules'));
 app.use('/scripts',express.static('../scripts'));
 
